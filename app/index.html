@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunset Cover — GTA-style poster maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">SC</span><span class="brand-name">Sunset Cover</span></div>
+  <p class="tagline">Turn your photo into a Vice City sunset poster — in three steps.</p>
+</header>
+
+<main class="layout">
+  <section class="panel controls" aria-label="Cover controls">
+    <h2>1 · Photos</h2>
+    <label class="file-btn">Add your photos
+      <input id="fileInput" type="file" accept="image/*" multiple hidden>
+    </label>
+    <p class="hint">Photos stay on your machine — nothing is uploaded.</p>
+    <div id="photoStrip" class="photo-strip" aria-label="Your photos"></div>
+    <div class="row">
+      <button id="onePhotoBtn" type="button">One photo, all panels</button>
+      <button id="shuffleBtn" type="button">Shuffle photos</button>
+    </div>
+
+    <h2>2 · Layout &amp; size</h2>
+    <div class="row" id="layoutRow" role="group" aria-label="Layout">
+      <button type="button" data-layout="vice" class="seg active">Vice Grid</button>
+      <button type="button" data-layout="strip" class="seg">Sunset Strip</button>
+      <button type="button" data-layout="trio" class="seg">Neon Trio</button>
+    </div>
+    <div class="row" id="sizeRow" role="group" aria-label="Export size">
+      <button type="button" data-size="square" class="seg active">1080 × 1080</button>
+      <button type="button" data-size="portrait" class="seg">1080 × 1350</button>
+      <button type="button" data-size="wide" class="seg">1920 × 1080</button>
+    </div>
+
+    <h2>3 · Caption</h2>
+    <label class="field">Title
+      <input id="titleInput" type="text" value="SUNSET DRIVE" maxlength="24">
+    </label>
+    <label class="field">Subtitle
+      <input id="subtitleInput" type="text" value="A VICE CITY STORY" maxlength="40">
+    </label>
+    <div class="row" id="titleColorRow" role="group" aria-label="Title colour">
+      <button type="button" data-color="#ffffff" class="swatch active" style="--c:#ffffff" aria-label="White"></button>
+      <button type="button" data-color="#ffd23e" class="swatch" style="--c:#ffd23e" aria-label="Gold"></button>
+      <button type="button" data-color="#ff5ea8" class="swatch" style="--c:#ff5ea8" aria-label="Pink"></button>
+      <button type="button" data-color="#3ee6ff" class="swatch" style="--c:#3ee6ff" aria-label="Cyan"></button>
+    </div>
+
+    <h2>Colour grade</h2>
+    <div class="row" id="gradeRow" role="group" aria-label="Colour grade">
+      <button type="button" data-grade="sunset" class="seg active">Sunset</button>
+      <button type="button" data-grade="neon" class="seg">Neon</button>
+      <button type="button" data-grade="noir" class="seg">Noir</button>
+    </div>
+    <label class="field">Grade strength
+      <input id="gradeInput" type="range" min="0" max="100" value="70">
+    </label>
+
+    <h2>Selected panel</h2>
+    <p class="hint" id="panelHint">Click a panel in the preview to select it, then drag it to move the photo.</p>
+    <label class="field">Zoom
+      <input id="zoomInput" type="range" min="100" max="250" value="120">
+    </label>
+    <label class="field">Move left / right
+      <input id="panXInput" type="range" min="-50" max="50" value="0">
+    </label>
+    <label class="field">Move up / down
+      <input id="panYInput" type="range" min="-50" max="50" value="0">
+    </label>
+
+    <button id="exportBtn" type="button" class="export-btn">Export PNG</button>
+    <p class="hint" id="exportStatus">Ready — your cover exports at full size.</p>
+  </section>
+
+  <section class="panel preview" aria-label="Live preview">
+    <div class="preview-head">
+      <h2>Live preview</h2>
+      <span id="sizeLabel" class="size-label">1080 × 1080 · Square</span>
+    </div>
+    <canvas id="previewCanvas" width="900" height="900"></canvas>
+    <p class="hint">Tip: click a panel, drag to reposition its photo, scroll over it to zoom.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Sunset Cover — an original poster maker. No game logos, artwork or fonts are used; the display font is Anton (SIL Open Font License, see fonts/OFL.txt). Sample photos are original scenes drawn in code.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

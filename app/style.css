@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "Anton";
+  src: url("fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #f5eef7;
+  --muted: #b9a8c4;
+  --bg: #14091f;
+  --card: #221130;
+  --card2: #2c1840;
+  --line: #4a2d63;
+  --accent: #ff5ea8;
+  --accent2: #ffb13e;
+  --cyan: #3ee6ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: linear-gradient(160deg, #1c0b2e 0%, #14091f 55%, #2b0f33 100%);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 24px 6px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark {
+  display: inline-grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 9px;
+  background: linear-gradient(135deg, #ff5ea8, #ffb13e);
+  color: #1c0b2e; font-family: "Anton", sans-serif; font-size: 19px; letter-spacing: 1px;
+}
+.brand-name { font-family: "Anton", sans-serif; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; }
+.tagline { margin: 0; color: var(--muted); font-size: 14px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+  padding: 14px 24px 24px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.controls h2 {
+  font-family: "Anton", sans-serif;
+  font-size: 15px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent2);
+  margin: 20px 0 10px;
+}
+.controls h2:first-child { margin-top: 0; }
+
+.hint { color: var(--muted); font-size: 12.5px; margin: 8px 0; line-height: 1.45; }
+
+.row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+
+button {
+  font: inherit; color: var(--ink);
+  background: var(--card2); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 12px; cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button.active { background: var(--accent); border-color: var(--accent); color: #1c0b2e; font-weight: 700; }
+
+.file-btn {
+  display: inline-block; padding: 10px 16px; border-radius: 8px; cursor: pointer;
+  background: linear-gradient(135deg, #ff5ea8, #ffb13e); color: #1c0b2e; font-weight: 800;
+}
+.file-btn:hover { filter: brightness(1.1); }
+
+.photo-strip { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; min-height: 64px; }
+.photo-strip img {
+  width: 64px; height: 64px; object-fit: cover; border-radius: 8px; cursor: pointer;
+  border: 2px solid transparent;
+}
+.photo-strip img:hover { border-color: var(--cyan); }
+.photo-strip img.assigned { border-color: var(--accent2); }
+.photo-strip .empty { color: var(--muted); font-size: 12.5px; align-self: center; }
+
+.field { display: block; margin: 10px 0; font-size: 13px; color: var(--muted); }
+.field input[type="text"] {
+  display: block; width: 100%; margin-top: 4px; padding: 9px 10px;
+  background: #160a24; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; font: inherit;
+}
+.field input[type="range"] { display: block; width: 100%; margin-top: 6px; accent-color: var(--accent); }
+
+.swatch {
+  width: 30px; height: 30px; border-radius: 50%; padding: 0;
+  background: var(--c); border: 2px solid #ffffff55;
+}
+.swatch.active { border-color: #fff; box-shadow: 0 0 0 2px var(--accent); }
+
+.export-btn {
+  width: 100%; margin-top: 16px; padding: 13px; font-size: 17px; font-weight: 800;
+  background: linear-gradient(135deg, #ff5ea8, #ffb13e); color: #1c0b2e; border: none;
+}
+
+.preview-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.preview-head h2 { font-family: "Anton", sans-serif; letter-spacing: 2px; text-transform: uppercase; margin: 0; font-size: 18px; }
+.size-label { color: var(--muted); font-size: 13px; }
+
+#previewCanvas {
+  display: block; width: 100%; max-width: 760px; margin: 14px auto 6px;
+  border-radius: 6px; background: #000; cursor: grab;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .55);
+}
+#previewCanvas:active { cursor: grabbing; }
+
+.foot { padding: 0 24px 22px; color: var(--muted); font-size: 12px; line-height: 1.5; max-width: 1100px; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+}
